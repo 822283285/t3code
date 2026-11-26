@@ -4,6 +4,16 @@ T3 Code is a minimal GUI for coding agents. A Node WebSocket server wraps provid
 
 You can think of T3 Code as an open source "bring-your-own-subscription" alternative to apps like Claude Desktop, Codex App, Cursor Glass and Conductor.
 
+## 本 Fork 的开发约定
+
+本节是 `822283285/t3code` 的增补规则。AI 在开发、同步或发布前必须阅读并遵守 [Fork 开发流程](docs/operations/06_fork-workflow.md)。同步上游时保留本节及其引用的规范，不用官方版本覆盖本 Fork 的约定。
+
+- `upstream` 指向官方仓库，`origin` 指向本人的 Fork。`main` 只镜像官方代码；定制开发放在 `custom`，独立任务可从 `custom` 创建功能分支并合回。
+- 从 Fork 拉取定制代码时使用 `origin/custom`；同步官方代码时先快进更新 `main`，再将 `main` 合入 `custom`，保留全部定制提交。分叉或冲突必须查明原因，不得用 reset、强制推送或重写已发布历史来消除差异。
+- 用户要求“同步一次代码”时，默认包括同步官方、本地 `main` / `custom`、按锁文件更新受影响依赖、必要检查及推送到 Fork；用户明确限定仅本地等范围时遵从该限制。其他开发任务的提交、推送和发布按该任务授权执行，不重复请求已有授权。
+- 发布使用验收通过的 `custom` 提交，成功安装并验收后用不可变的 `custom-YYYYMMDD-N` 标签记录。同步代码、切分支或构建成功均不能当作已上线；未要求发布时不替换正在使用的 T3 Code。
+- 开发使用项目保存的脚本及隔离数据目录 `~/.t3/dev-t3code`。交付时说明分支、提交、检查结果，以及是否实际安装发布；不要把未执行的检查说成通过。
+
 ## What makes T3 Code special?
 
 We have over 500,000 users who love T3 Code. It's important we maintain the things they love as we continue to iterate on the product. Here's a brief list of the things we can never compromise on.
